@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goapp-deployment
+  namespace: lesson16
+  labels:
+    app: goapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: goapp
+  template:
+    metadata:
+      labels:
+        app: goapp
+    spec:
+      containers:
+        - name: web
+          image: cr00z/lesson1:v0.2
+          ports:
+            - containerPort: 8080
+          env:
+            - name: COLORGOOD
+              valueFrom:
+                configMapKeyRef:
+                  name: env-cm
+                  key: colorgood
+            - name: COLORBAD
+              valueFrom:
+                configMapKeyRef:
+                  name: env-cm
+                  key: colorbad
+          volumeMounts:
+            - mountPath: "/data"
+              name: my-volume
+      volumes:
+        - name: my-volume
+          persistentVolumeClaim:
+            claimName: my-pvc

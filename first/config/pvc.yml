@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "default"  # default используется по умолчанию, можно прописать тот класс, 
+  resources:                   # который сообщит Вам администратор
+    requests:
+      storage: 1Gi

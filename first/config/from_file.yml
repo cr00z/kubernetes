@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: first-cm
+  namespace: lesson16
+data:
+  config.yaml: |
+    colorgood: purple
+    colorbad: yellow
