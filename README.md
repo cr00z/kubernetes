@@ -1,3 +1,5 @@
+# Заметки по куберу
+
 ```
 brew install minikube
 mv .minikube ~/goinfre
@@ -10,7 +12,7 @@ minikube stop
 brew install helm
 ```
 
-Использование чужих чартов
+## Использование чужих чартов
 
 ```
 helm repo add grafana https://grafana.github.io/helm-charts  # Добавляем репозиторий Хельм-Чартов
@@ -21,8 +23,9 @@ kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-passwor
 export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=grafana,app.kubernetes.io/instance=grafana" -o jsonpath="{.items[0].metadata.name}")
 kubectl --namespace default port-forward $POD_NAME 3000
                                                     # Делаем проброс портов и заходим в браузер на  localhost:3000
+```
 
-Полезные инструменты
+## Полезные инструменты
 
 ```
 brew install aylei/tap/kubectl-debug
